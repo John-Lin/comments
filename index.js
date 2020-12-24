@@ -16,7 +16,7 @@ function drawResults(results) {
       <li>
 	  	<div class="comment-main-level">
 	  		<!-- Avatar -->
-	  		<div class="comment-avatar"><img src="${result.owner.avatar}" alt="" onerror="if (this.src != 'http://i9.photobucket.com/albums/a88/creaticode/avatar_2_zps7de12f8b.jpg') this.src = 'http://i9.photobucket.com/albums/a88/creaticode/avatar_2_zps7de12f8b.jpg';"></div>
+	  		<div class="comment-avatar"><img src="${result.owner.avatar}" alt="" onerror="if (this.src != './static/ox.svg') this.src = './static/ox.svg';"></div>
 	  		<!-- Contenedor del Comentario -->
 	  		<div class="comment-box">
 	  			<div class="comment-head">
