@@ -1,4 +1,5 @@
 let page = 1;
+let lastPage = 1;
 const commentsList = document.getElementById('comments-list');
 const BASE_URL = 'https://api.hiskio.com/v2/courses/349/feedbacks';
 
@@ -34,12 +35,20 @@ function drawResults(results) {
 		)
 		.join('');
 	page++;
-    if page <= result.meta.last_page {
+    if (page <= lastPage) {
 	    commentsList.innerHTML += html;
     }
 }
 
 document.addEventListener('DOMContentLoaded', getData);
+
+fetch(`${BASE_URL}?page=${page}&column=created_at&sort=DESC&limit=10`)
+.then((response) => response.json())
+.then((results) => {
+    lastPage = results.meta.last_page
+});
+
+
 window.addEventListener('scroll', () => {
 	if (
 		document.documentElement.scrollTop +
