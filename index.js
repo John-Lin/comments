@@ -3,7 +3,7 @@ const commentsList = document.getElementById('comments-list');
 const BASE_URL = 'https://api.hiskio.com/v2/courses/349/feedbacks';
 
 function getData() {
-	fetch(`${BASE_URL}?page=${page}&column=created_at&sort=DESC&limit=8`)
+	fetch(`${BASE_URL}?page=${page}&column=created_at&sort=DESC&limit=10`)
 		.then((response) => response.json())
 		.then((results) => drawResults(results.data));
 }
@@ -34,7 +34,9 @@ function drawResults(results) {
 		)
 		.join('');
 	page++;
-	commentsList.innerHTML += html;
+    if page <= result.meta.last_page {
+	    commentsList.innerHTML += html;
+    }
 }
 
 document.addEventListener('DOMContentLoaded', getData);
